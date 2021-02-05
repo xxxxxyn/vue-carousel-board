@@ -113,13 +113,12 @@
                 this.isNowClickStop=false
                 this.activeLine=''
                 if (this.$refs.moveBox.offsetTop > -this.oneLoopHeight-1) {
-                    console.log(Math.floor(this.oneLineHeight/(this.config.speed*0.5)),this.oneLineHeight)
-                    if(this.step===Math.floor(this.oneLineHeight/(this.config.speed*0.5))){
+                    if(this.step===Math.floor(this.oneLineHeight/(this.configTrue.speed*0.5))){
                         window.cancelAnimationFrame(this.idRAF)
                         this.step = 0
                         this.countPause()
                     }else{
-                        this.moveCount = this.moveCount - this.config.speed*0.5
+                        this.moveCount = this.moveCount - this.configTrue.speed*0.5
                         this.idRAF = requestAnimationFrame(this.carousel)
                         this.step++
                     }
@@ -140,7 +139,7 @@
             },
             clickOneLine(index){
                 this.activeLine=index
-                if(this.config.clickStop){
+                if(this.configTrue.clickStop){
                     this.isNowClickStop=true
                     // this.cancelAF()
                     window.cancelAnimationFrame(this.idRAF)
