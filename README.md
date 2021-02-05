@@ -1,4 +1,4 @@
-#### vue-carousel-list
+### vue-carousel-list
 List rotate one by one 
 
 轮播表，点击可以暂停，速度可调节，有列宽等配置项
@@ -6,13 +6,16 @@ List rotate one by one
 
 
 
-##### 开始
+#### 开始
 
 npm i vue-carousel-list
+
+或
 
 yarn add vue-carousel-list
 
 暂时只能按需引入，不能全局引入
+Now we can only import it on demand, global import dose not work
 
 ```
 import CarouselList from 'vue-carousel-list'
@@ -24,12 +27,14 @@ components:{
 
 
 
-##### 使用
+#### 使用
 
 ```
-//一行行的数据，数组格式
+//列表的数据，数组格式
+//data of the list
 :data="data"
 //轮播的配置，详见例子
+//config of carouselList, see example for detail
 :config='config'
 //example:
               data:[
@@ -39,12 +44,15 @@ components:{
                   ['a3','b3','c3']
               ],
               config:{
-                  speed:1,//速度调节，越大越快
-                  clickStop:true//点击是否暂停
-                  columnWidth:["10vw","50px","80px"],//各个列宽
-                  textAlign:["center","left","left"],//各列文字对齐方式
+                  speed:1,//速度调节，越大越快--Number
+                  clickStop:true//点击是否暂停--Boolean
+                  clickStopTime:'4000',//点击暂停毫秒数--String
+                  columnWidth:["10vw","50px","80px"],//各个列宽,要使用什么单位都行--Array
+                  textAlign:["center","left","left"],//各列文字对齐方式--Array
+speed:2,
+                  hoverStop:true,//鼠标进入是否暂停
               },
-//点击获取该行数据事件。接收的第一个参数就是点击行
+//点击获取该行数据事件。接收的第一个参数就是点击行数据
 @clickcurrent=''
 ```
 

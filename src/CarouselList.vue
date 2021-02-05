@@ -1,8 +1,13 @@
 <template>
     <div class="carousel-list">
-        <ul class="move-box" ref="moveBox" :style="{top:moveCount+'px'}">
+        <ul class="move-box" ref="moveBox"
+            :style="{top:moveCount+'px'}"
+            @mouseleave="mouseLeaveHandle"
+        >
             <li v-for="(item,indexOut) in data" @click="clickOneLine(indexOut)"
-                :class="{'active-carousel-line':activeLine===indexOut,'scroll-line':true}">
+                :class="{'active-carousel-line':activeLine===indexOut,'scroll-line':true}"
+                @mouseenter="mouseEnterHandle"
+            >
                 <span v-for="(itemIn,index) in data[indexOut]"
                       :style="{'width':!!configTrue.columnWidth[index]?configTrue.columnWidth[index]:'60px',
                                'text-align':!!configTrue.textAlign[index]?configTrue.textAlign[index]:'center',}"
@@ -11,6 +16,7 @@
             <li v-for="(item,indexOut) in data"
                 @click="clickOneLine(indexOut)"
                 :class="{'active-carousel-line':activeLine===indexOut}"
+                @mouseenter="mouseEnterHandle"
             >
                 <span v-for="(itemIn,index) in data[indexOut]"
                       :style="{'width':!!configTrue.columnWidth[index]?configTrue.columnWidth[index]:'60px',
@@ -58,22 +64,6 @@
         },
         data(){
             return{
-                /*            let step = 0
-            let moveBox = document.getElementById('moveBox')
-            let liArr=moveBox.children
-            console.log(typeof liArr)
-            //移动过的高度
-            let count = 0
-            //一个loop的高度
-            let oneLoopHeight = moveBox.offsetHeight / 2
-            //raf的id，用于暂停
-            let idRAF
-            //顿一下的计时器
-            var timerPauseAuto
-            //上一个点击暂停计时器
-            var timerLastStop
-            //点击的对象
-            var lastClickItem*/
                 step:0,
                 moveCount:0,
                 oneLoopHeight:0,
@@ -83,6 +73,7 @@
                 timerLastStop:'',
                 lastClickItem:'',
                 activeLine:'',
+                isNowClickStop:false
             }
         },
         computed:{
@@ -91,7 +82,9 @@
                     speed:2,
                     columnWidth: [],
                     textAlign:[],
-                    clickStop:true
+                    clickStop:true,
+                    clickStopTime:'4000',
+                    hoverStop:true,
                 },this.config);
             }
         },
@@ -106,7 +99,18 @@
             })
         },
         methods:{
+            mouseEnterHandle(){
+                if(this.configTrue.hoverStop){
+                    window.cancelAnimationFrame(this.idRAF)
+                }
+            },
+            mouseLeaveHandle(){
+                if(this.configTrue.hoverStop&&!this.isNowClickStop){
+                    this.idRAF = requestAnimationFrame(this.carousel)
+                }
+            },
             carousel() {
+                this.isNowClickStop=false
                 this.activeLine=''
                 if (this.$refs.moveBox.offsetTop > -this.oneLoopHeight-1) {
                     console.log(Math.floor(this.oneLineHeight/(this.config.speed*0.5)),this.oneLineHeight)
@@ -128,7 +132,7 @@
             countStopRunAgain() {
                 let that = this
                 clearTimeout(this.timerPauseAuto)
-                this.timerLastStop=setTimeout(that.carousel, '6000')
+                this.timerLastStop=setTimeout(that.carousel, that.configTrue.clickStopTime)
             },
             countPause() {
                 let that = this
@@ -137,6 +141,8 @@
             clickOneLine(index){
                 this.activeLine=index
                 if(this.config.clickStop){
+                    this.isNowClickStop=true
+                    // this.cancelAF()
                     window.cancelAnimationFrame(this.idRAF)
                     if(!!this.timerLastStop){
                         clearTimeout(this.timerLastStop)
