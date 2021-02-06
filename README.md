@@ -1,16 +1,17 @@
 ### vue-carousel-list
 List rotate one by one 
 
-轮播表，点击可以暂停，速度可调节，有列宽等配置项
+轮播表，点击可以暂停获取行数据，速度可调节，有列宽等配置项。
+Carousel list that can be stopped by click and rerun after a few seconds; Speed, each column width etd. can be set.
 
 
 
 
-#### 开始
+#### 开始-Start
 
 npm i vue-carousel-list
 
-或
+或 or
 
 yarn add vue-carousel-list
 
@@ -27,7 +28,7 @@ components:{
 
 
 
-#### 使用
+#### 使用-Usage
 
 ```
 //列表的数据，数组格式
@@ -55,4 +56,10 @@ speed:2,
 //点击获取该行数据事件。接收的第一个参数就是点击行数据
 @clickcurrent=''
 ```
+
+#### !!!注意-Attention!!!
+
+暂时不兼容IE。。。
+
+Incompatible with IE
 
