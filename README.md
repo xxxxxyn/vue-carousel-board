@@ -41,10 +41,14 @@ components:{
 :config='config'
 //example:
               data:[
-                  ['a','b','c'],
-                  ['a1','b1','c1'],
-                  ['a2','b2','c2'],
-                  ['a3','b3','c3']
+          {
+            key: 1,
+            row: [
+              { text: `text1 1`, key: `text1` },
+              { text: `text2 2`, key: `text2` },
+              { text: `text3 3`, key: `text3` },
+            ],
+          },
               ],
               config:{
                   speed:1,//速度调节，越大越快--Number
@@ -63,4 +67,7 @@ components:{
 暂时不兼容IE。。。
 
 Incompatible with IE
+
+update info：
+0428：更换一个实现方法，主要解决数据量大的时候的性能问题。
 
