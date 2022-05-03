@@ -1,6 +1,6 @@
 {
   "name": "vue-carousel-list",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "list rotate one by one, which can stop by click",
   "main": "dist/carousel.js",
   "private": false,
