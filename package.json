@@ -1,6 +1,6 @@
 {
   "name": "vue-carousel-list",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "list rotate one by one, which can stop by click",
   "main": "dist/carousel.js",
   "private": false,
@@ -8,8 +8,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack --display-error-details --config webpack.config.js"
   },
-  "directories":{
-    "dist":"dist"
+  "directories": {
+    "dist": "dist"
   },
   "keywords": [
     "carousel list",
