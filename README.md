@@ -1,3 +1,6 @@
+#### Update Info
+0428：更换一个实现方法，使用虚拟滚动，主要解决数据量大的时候的性能问题。
+
 ### vue-carousel-list
 List rotate one by one 
 
@@ -68,6 +71,4 @@ components:{
 
 Incompatible with IE
 
-update info：
-0428：更换一个实现方法，主要解决数据量大的时候的性能问题。
 
