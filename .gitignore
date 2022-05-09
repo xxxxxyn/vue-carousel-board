@@ -1,12 +1,8 @@
 .DS_Store
 node_modules/
-dist/
+# dist/
 npm-debug.log
 yarn-error.log
-yarn.lock
-package-lock.json
-.npmignore
-webpack.config.js
 
 # Editor directories and files
 .idea
@@ -14,3 +10,5 @@ webpack.config.js
 *.ntvs*
 *.njsproj
 *.sln
+index.html
+

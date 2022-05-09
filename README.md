@@ -1,7 +1,10 @@
 #### Update Info
-0428：更换一个实现方法，使用虚拟滚动，主要解决数据量大的时候的性能问题。
 
-### vue-carousel-list
+0428：更换一个实现方法，使用虚拟滚动，主要解决数据量大的时候的性能问题。
+0509：解决条数太少报错问题
+
+### 简介 vue-carousel-board Intro
+
 List rotate one by one 
 
 轮播表，点击可以暂停获取行数据，速度可调节，有列宽等配置项。
@@ -10,30 +13,16 @@ Carousel list that can be stopped by click and rerun after a few seconds; Speed,
 
 
 
-#### 开始-Start
+#### 开始 Start
 
-npm i vue-carousel-list
+npm install vue-carousel-board
 
-或 or
+main.js内引入
+import CarouselBoard from 'vue-carousel-board'
+Vue.use(CarouselBoard)
 
-yarn add vue-carousel-list
+#### 使用 Usage
 
-暂时只能按需引入，不能全局引入
-Now we can only import it on demand, global import dose not work
-
-```
-<CarouselList :data="data" :config='config'></CarouselList>
-......
-import CarouselList from 'vue-carousel-list'
-......
-components:{
-            CarouselList
-        },
-```
-
-
-
-#### 使用-Usage
 
 ```
 //列表的数据，数组格式
@@ -64,11 +53,4 @@ components:{
 //点击获取该行数据事件。接收的第一个参数就是点击行数据
 @clickcurrent=''
 ```
-
-#### !!!注意-Attention!!!
-
-暂时不兼容IE。。。
-
-Incompatible with IE
-
 
